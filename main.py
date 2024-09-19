@@ -1,17 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+from database import DatabaseHandler
+from routes.home import homeBlueprint
+from routes.userManagement import signupBlueprint, createUserBlueprint
+
 
 app=Flask(__name__)
 app.config["SECRET_KEY"]="brownstorm"
+db=DatabaseHandler("appData.db")
+#db.createTables()
 
 #routing
-@app.route("/")
-def home():
-    return render_template("index.html")
+app.register_blueprint(homeBlueprint)
 
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
+app.register_blueprint(signupBlueprint)
 
+app.register_blueprint(createUserBlueprint)
 
 
 

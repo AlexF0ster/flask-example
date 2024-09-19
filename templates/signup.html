@@ -6,7 +6,28 @@
     <title>Signup</title>
 </head>
 <body>
-    <h1>signup for the brownzone</h1>
+    <h1>signup</h1>
+
+    <form action="/createUser" method="post">
+        <div>
+            <label for="username">username: </label>
+            <input type="text" name="username" id="username" required>
+        </div>
+
+        <div>
+            <label for="password">password: </label>
+            <input type="text" name="password" id="password" required>
+        </div>
+
+        <div>
+            <label for="repassword">repassword: </label>
+            <input type="text" name="repassword" id="repassword" required>
+        </div>
+
+        <div>
+            <input type="submit" value="Sign Up">
+        </div>
+    </form>
     
 </body>
 </html>
