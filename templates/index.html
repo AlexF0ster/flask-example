@@ -3,32 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME PAGE</title>
+    <title>Home Page</title>
 </head>
 <body>
-    <h1>welcome</h1>
+    <h1>Welcome to my page</h1>
 
-    <form>
+    <form action = '/auth' method = 'post'>
+    <div>
+            <label for = 'username'>username:  </label>
+            <input type = 'text' name = 'username' id = 'username' required>
+        </div>
         <div>
-            <label for="username">username: </label>
-            <input type="text" name="username" id="username" required>
+            <label for = 'password'>password:  </label>
+            <input type = password name = 'password' id = 'password' required>
         </div>
 
         <div>
-            <label for="password">password: </label>
-            <input type="text" name="password" id="password" required>
-        </div>
-
-        <div>
-            <label for="repassword">repassword: </label>
-            <input type="text" name="repassword" id="repassword" required>
-        </div>
-
-        <div>
-            <input type="submit" value="Log In">
+            <input type = 'submit' value = 'login'>
         </div>
     </form>
 
-    Don't have an account? <a href ="/signup">Sign Up</a>
+    Don't have an account? <a href = '/signup'>Sign Up</a>
 </body>
 </html>

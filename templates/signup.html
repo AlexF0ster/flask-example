@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Sign up page</title>
 </head>
 <body>
-    <h1>signup</h1>
+    <h1>Sign Up Now!</h1>
 
-    <form action="/createUser" method="post">
+    <form action = '/createUser' method = 'post'>
         <div>
-            <label for="username">username: </label>
-            <input type="text" name="username" id="username" required>
+            <label for = 'username'>username:  </label>
+            <input type = 'text' name = 'username' id = 'username' required>
+        </div>
+        <div>
+            <label for = 'password'>password:  </label>
+            <input type = password name = 'password' id = 'password' required>
         </div>
 
         <div>
-            <label for="password">password: </label>
-            <input type="text" name="password" id="password" required>
+            <label for = 'rePassword'>Re-enter Password:  </label>
+            <input type = password name = 'rePassword' id = 'rePassword' required>
         </div>
 
         <div>
-            <label for="repassword">repassword: </label>
-            <input type="text" name="repassword" id="repassword" required>
-        </div>
-
-        <div>
-            <input type="submit" value="Sign Up">
+            <input type = 'submit' value = 'Sign Up'>
         </div>
     </form>
-    
+
+    Already have an account?  <a href = '/'>Login</a>
 </body>
 </html>

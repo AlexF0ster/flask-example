@@ -1,37 +1,40 @@
 from flask import Blueprint, redirect, render_template, request
 from database import DatabaseHandler
 
+db = DatabaseHandler('appData.db')
 
-signupBlueprint=Blueprint("signup",__name__)
-createUserBlueprint=Blueprint("createUser",__name__)
-authenticateUserBlueprint=Blueprint("authenticateUser",__name__)
+# Blueprint names
+signupBP = Blueprint('signup', __name__)
+createUserBP = Blueprint('createUser',__name__)
+authUserBp = Blueprint('authUser', __name__)
 
-@authenticateUserBlueprint.route("/authenticate", methods=["post"])
-def authenticateUser():
-    db=DatabaseHandler("appData.db")
-    username=request.form["username"]
-    password=request.form["password"]
+# Blueprint Routing
+@signupBP.route("/signup")
+def signUp():
+    return  render_template('signup.html')
 
-
-
-@signupBlueprint.route("/signup")
-def signup():
-    return render_template("signup.html")
-
-
-
-@createUserBlueprint.route("/createUser", methods=["post"])
+@createUserBP.route('/createUser', methods = ['post'])
 def createUser():
-    db=DatabaseHandler("appData.db")
-    username=request.form["username"]
-    password=request.form["password"]
-    repassword=request.form["repassword"]
-    
-    if password==repassword:
-        response=db.createUser(username,password)
-        if response==True:
-            return redirect("/")
+    username = request.form['username']
+    password = request.form['password']
+    rePassword = request.form['rePassword']
+    if password == rePassword:
+        responce = db.createUser(username,password)
+        if responce == True:
+            return redirect('/')
         else:
-            return "<h1>error making account</h1>"
+            return '<h1> Error Making Account </h1>'
+            
     else:
-        return "<h1>passwords do not match</h1>"
+        return '<h1> Passwords Dont match </h1>'
+
+@authUserBp.route('/auth', methods = ['post'])
+def authUser():
+    username = request.form['username']
+    password = request.form['password']
+
+    responce = db.authenticate(username ,password)
+    if responce == True:
+        return redirect('/dashboard')
+    else:
+        return '<h1> Error loging in</h1>'

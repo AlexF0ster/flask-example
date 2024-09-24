@@ -1,26 +1,22 @@
 from flask import Flask, render_template, request, redirect
 from database import DatabaseHandler
-from routes.home import homeBlueprint
-from routes.userManagement import signupBlueprint, createUserBlueprint
+from routes.home import homeBP
+from routes.userManagement import signupBP, createUserBP, authUserBp
+from routes.dashboard import dashboardBp
 
-
-app=Flask(__name__)
-app.config["SECRET_KEY"]="brownstorm"
-db=DatabaseHandler("appData.db")
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'THISISABADKEY'
+db = DatabaseHandler('appData.db')
 #db.createTables()
 
-#routing
-app.register_blueprint(homeBlueprint)
 
-app.register_blueprint(signupBlueprint)
+##routing
+app.register_blueprint(homeBP)
+app.register_blueprint(signupBP)
+app.register_blueprint(createUserBP)
+app.register_blueprint(authUserBp)
+app.register_blueprint(dashboardBp)
 
-app.register_blueprint(createUserBlueprint)
-
-
-
-
-
-
-######
-app.run(debug=True)
-
+  
+#########
+app.run(debug = True)
